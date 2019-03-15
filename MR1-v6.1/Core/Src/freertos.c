@@ -1,24 +1,23 @@
-/* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * 文件�?          : freertos.c
+  * 文件名          : freertos.c
   * 创建时间        : 2019.02.12
-  * 作�??            : 任云�?
+  * 作者            : 任云帆
   *-----------------------------------------------------------------------------
-  * �?近修改时�?    : 2019.02.15
-  * 修改�?          : 任云�?
+  * 最近修改时间    : 2019.02.15
+  * 修改人          : 任云帆
   ******************************************************************************
-  *									文件描述								   *
-  ******************************************************************************
-  *	freertos操作系统，MR1�?有工作的循环进行位置
-  ******************************************************************************
-  * 1.本代码基于STM32F427IIH6�?发，编译环境为Keil 5，基于FreeRTOS进行�?发�??
-  * 2.本代码只适用于Robocon 2019MR1机器人，不建议用于其他用�?
+	*																文件描述																		 *
+	******************************************************************************
+	*	操作系统启动，多任务线程管理
+	******************************************************************************
+  * 1.本代码基于STM32F427IIH6开发，编译环境为Keil 5，基于FreeRTOS进行开发。
+  * 2.本代码只适用于Robocon 2019MR1机器人，不建议用于其他用途
   * 3.本代码以UTF-8格式编码，请勿以ANSI编码形式打开
-  * 4.本代码包含大量中文注释，请仔细�?�读代码后使�?
-  * 5.本代码最终解释权归哈尔滨工业大学（深圳）Robocon战队�?�?
+  * 4.本代码包含大量中文注释，请仔细通读代码后使用
+  * 5.本代码最终解释权归哈尔滨工业大学（深圳）南工问天战队所有
   *
-  * Copyright (c) 2019 哈尔滨工业大学（深圳）Robocon战队 版权�?�?
+  * Copyright (c) 2019 哈尔滨工业大学（深圳）南工问天战队 版权所有
   ******************************************************************************
   */
 /* USER CODE END Header */
@@ -110,7 +109,7 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
-		osTimerStart(SuperviseTimerHandle, 2);                   //���ϵͳÿ2msִ��һ��
+		osTimerStart(SuperviseTimerHandle, 2);                   
   /* USER CODE END RTOS_TIMERS */
 
   /* Create the thread(s) */
@@ -137,7 +136,7 @@ void MX_FREERTOS_Init(void) {
 
 /* USER CODE BEGIN Header_MR1OtherTask */
 /**
-  * @brief  未定义留作备用线�?
+  * @brief  未定义留作备用线程
   * @param  argument: Not used 
   * @retval None
   */
@@ -166,7 +165,7 @@ void LEDShow(void const * argument)
 {
   /* USER CODE BEGIN LEDShow */
 	HAL_GPIO_WritePin(GPIOE,GPIO_PIN_11,GPIO_PIN_SET);//初始化为熄灭
-	HAL_GPIO_WritePin(GPIOF,GPIO_PIN_14,GPIO_PIN_SET);//停止状�?�红灯亮
+	HAL_GPIO_WritePin(GPIOF,GPIO_PIN_14,GPIO_PIN_SET);//停止状态红灯亮
   /* Infinite loop */
   for(;;)
   {
@@ -186,7 +185,7 @@ void LEDShow(void const * argument)
 
 /* USER CODE BEGIN Header_MR1MainTask */
 /**
-* @brief MR1工作主线�?
+* @brief MR1工作主线程
 * @param argument: Not used
 * @retval None
 */

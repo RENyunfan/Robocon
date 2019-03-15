@@ -15,9 +15,9 @@
   * 2.本代码只适用于Robocon 2019MR1机器人，不建议用于其他用途
   * 3.本代码以UTF-8格式编码，请勿以ANSI编码形式打开
   * 4.本代码包含大量中文注释，请仔细通读代码后使用
-  * 5.本代码最终解释权归哈尔滨工业大学（深圳）Robocon战队所有
+  * 5.本代码最终解释权归哈尔滨工业大学（深圳）南工问天战队所有
   *
-  * Copyright (c) 2019 哈尔滨工业大学（深圳）Robocon战队 版权所有
+  * Copyright (c) 2019 哈尔滨工业大学（深圳）南工问天战队 版权所有
   ******************************************************************************
   */
 
@@ -26,8 +26,6 @@
 #include "SendSignal.h"				//使用SendSignal();函数
 #include "MR1Init.h"
 #include <math.h>
-float x,y,dx,dy ,distance;
-int targetnumber;
 
 /**
 * @brief MR1手动模式
@@ -67,31 +65,6 @@ void MR1_SetStage()
 void MR1_MANUAL()
 {
 		MR1.SpeedLevel = 10;
-
-}
-
-void MR1_HighSpeed()
-{
-float target[8][2] = { {-700,700}, {-1150,1400},{-450,2150}, {300,2900},{-450,3650}, {-1150,4400}, {-400,5200},{-400,6200} };
-	x = (MR1.GyroData.pos_x - MR1.GyroData.pos_y) / sqrt(2);
-	y = (MR1.GyroData.pos_x + MR1.GyroData.pos_y) / sqrt(2);
-	if (targetnumber <= 7)
-	{
-		dy =  target[targetnumber][1] - y;
-		dx =  target[targetnumber][0] - x;
-		distance = sqrt(dy * dy + dx * dx);
-		if (distance > 200)
-		{
-			MR1.Target.YSpeed = 4000 * (dy / distance);
-			MR1.Target.XSpeed = 4000 * (dx / distance);
-		}
-		else
-		{
-			targetnumber++;
-			MR1.Target.YSpeed = 0;
-			MR1.Target.XSpeed = 0;
-		}
-	}
 
 }
 
