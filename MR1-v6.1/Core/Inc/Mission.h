@@ -23,6 +23,21 @@
 #define AFA 45                              //轮子与车中心夹角
 #define L 375                               //机器人轮子到中心的距离
 
+#define AFA 45                              //杞瓙涓庤溅涓績澶硅
+#define L 375                               //鏈哄櫒浜鸿疆瀛愬埌涓績鐨勮窛绂?
+#define MR1_Ttarget_pos_x1 -(725+500)
+#define MR1_Ttarget_pos_y1 (1500+150)
+#define MR1_Ttarget_pos_x2 -(725-500)
+#define MR1_Ttarget_pos_y2 (3000+250)
+#define MR1_Ttarget_pos_x3 -(725+500)
+#define MR1_Ttarget_pos_y3 (4500+250)
+#define MR1_Ttarget_pos_x4 -725
+#define MR1_Ttarget_pos_y4 6000
+#define MR1_Ttarget_pos_x5 -725
+#define MR1_Ttarget_pos_y5 7500
+#define MR1_Ttarget_pos_angle 0
+#define MR1_Ttarget_Speed_x_MAX 4000
+#define MR1_Ttarget_Speed_y 3500
 void MR1_MANUAL(void);
 void MR1_STOP(void);
 void AUTOGoTrans(void);
@@ -30,5 +45,9 @@ void FourWheelVellControl(void);
 void MR1_HighSpeed(void);
 void MR1_SendSignal(void);
 void MR1_SetStage(void);
+void MR1_ToToken(void);
+void MR1_TransToken(void);
+void StopShoot(void);
+void MR1_Shoot(void);
 
 #endif

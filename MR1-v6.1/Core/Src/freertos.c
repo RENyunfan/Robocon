@@ -32,6 +32,7 @@
 /* USER CODE BEGIN Includes */     
 #include "gpio.h"
 #include "usart.h"
+#include "tim.h"
 #include "Supervise.h"
 #include "UsartReceive.h"
 #include "CanReceive.h"
@@ -44,7 +45,8 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+int flag ;
+int aaa;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -148,7 +150,11 @@ void MR1OtherTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-
+		if(MR1.Chassis_Motor[0].fdbSpeed>5000)
+		{
+			MR1.WorkState=L2_Rx_STOP;
+			SendSignal();
+		}
     osDelay(1);
   }
   /* USER CODE END MR1OtherTask */
@@ -169,16 +175,19 @@ void LEDShow(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-		switch(MR1.WorkState)
-		{
-			case L1_R2_MANUAL:
-				LED_MANUAL();break;
-			case L2_Rx_STOP:
-				LED_STOP();break;
-			case L3_R2_Move:
-				LED_HIGH();break;
-			default:;
-		}
+//		switch(MR1.WorkState)
+//		{
+//			case L1_R2_MANUAL:
+//				LED_MANUAL();break;
+//			case L2_Rx_STOP:
+//				LED_STOP();break;
+//			case L3_R2_Move:
+//				LED_HIGH();break;
+//			default:;
+//		}
+		LED_Water();
+		osDelay(1);
+		
   }
   /* USER CODE END LEDShow */
 }
@@ -194,23 +203,35 @@ void MR1MainTask(void const * argument)
 {
   /* USER CODE BEGIN MR1MainTask */
 	RobotParamInit();
-	MR1.SpeedLevel=5;
+
+	HAL_GPIO_WritePin(GPIOF,GPIO_PIN_0,GPIO_PIN_SET);//使能电机脚部
+	HAL_GPIO_WritePin(GPIOE,GPIO_PIN_4,GPIO_PIN_SET);//使能电机脚部
+	HAL_GPIO_WritePin(GPIOF,GPIO_PIN_1,GPIO_PIN_SET);//使能电机脚部
+		__HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_1,1750);
   /* Infinite loop */
   for(;;)
   {
 		switch(MR1.WorkState)
 		{
 			case L1_R2_MANUAL:
-				MR1_MANUAL();break;
+				MR1_MANUAL();StopShoot();break;
 			case L2_Rx_STOP:
-				MR1_STOP();break;
+				MR1_STOP();StopShoot();break;
 			case L3_R2_Move:
-				MR1_HighSpeed();break;
+				MR1_SetStage();StopShoot();break;
 			case L3_R1_Pick:
-				MR1_SetStage();break;
+				StopShoot(); break;
+			case L1_R1_ToToken:
+				MR1_ToToken();StopShoot();break;
+			case 	L1_R3_TransToken:
+				MR1_TransToken();StopShoot();break;
+			case L3_R3_Shoot:
+				MR1_Shoot();break;
 			default:MR1_STOP();
 		}
+
 		osDelay(1);
+       
 
   /* USER CODE END MR1MainTask */
 		}

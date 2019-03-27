@@ -48,6 +48,7 @@
 2019rc_mr1\freertos_1.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
 2019rc_mr1\freertos_1.o: ../Core/Inc/gpio.h
 2019rc_mr1\freertos_1.o: ../Core/Inc/usart.h
+2019rc_mr1\freertos_1.o: ../Core/Inc/tim.h
 2019rc_mr1\freertos_1.o: ../Core/Inc/Supervise.h
 2019rc_mr1\freertos_1.o: ../Core/Inc/UsartReceive.h
 2019rc_mr1\freertos_1.o: ../Core/Inc/CanReceive.h

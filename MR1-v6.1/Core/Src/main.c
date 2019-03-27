@@ -104,8 +104,8 @@ int main(void)
   MX_USART6_UART_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-//	HAL_TIM_Base_Start_IT(&htim2);
-//	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);       //PWM1,用于控制机械组的电机（没写）
+	HAL_TIM_Base_Start_IT(&htim2);
+	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);       //PWM1,用于控制机械组的电机（没写）
 //	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);       //PWM2,用于控制机械组的电机（没写）
 	HAL_UART_Receive_DMA(&huart6, &UsartReceiveGyro, 1u);      //开启陀螺仪数据接收串口6
   HAL_UART_Receive_DMA(&huart1, UsartReceiveRemote, 18u);              //开启遥控器数据接收串口1
@@ -125,12 +125,16 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }
+
+
+
 
 /**
   * @brief System Clock Configuration

@@ -378,11 +378,6 @@
           <GroupName>Process</GroupName>
           <Files>
             <File>
-              <FileName>freertos.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Core/Src/freertos.c</FilePath>
-            </File>
-            <File>
               <FileName>Mission.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Core\Kevin\Mission.c</FilePath>
@@ -391,6 +386,11 @@
               <FileName>MR1Init.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Core\Kevin\MR1Init.c</FilePath>
+            </File>
+            <File>
+              <FileName>freertos.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Core/Src/freertos.c</FilePath>
             </File>
           </Files>
         </Group>

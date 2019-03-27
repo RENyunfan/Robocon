@@ -1,7 +1,7 @@
 --cpu Cortex-M4.fp
-"2019rc_mr1\freertos_1.o"
 "2019rc_mr1\mission.o"
 "2019rc_mr1\mr1init.o"
+"2019rc_mr1\freertos_1.o"
 "2019rc_mr1\sendsignal.o"
 "2019rc_mr1\canreceive.o"
 "2019rc_mr1\usartreceive.o"

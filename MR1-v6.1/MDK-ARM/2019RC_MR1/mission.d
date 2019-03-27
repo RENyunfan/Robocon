@@ -37,3 +37,4 @@
 2019rc_mr1\mission.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 2019rc_mr1\mission.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 2019rc_mr1\mission.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+2019rc_mr1\mission.o: ../Core/Inc/tim.h

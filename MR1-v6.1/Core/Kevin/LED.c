@@ -24,7 +24,7 @@
 #include "LED.h"
 #include "MR1Init.h"
 #include "main.h"
-
+int SPEED=200;
 
 void LED_STOP()
 {
@@ -51,3 +51,26 @@ void LED_ERROR()
 	HAL_Delay(100);
 }
 
+void LED_Water()
+{
+	HAL_GPIO_TogglePin(GPIOG,GPIO_PIN_1);//流水灯
+	HAL_Delay(SPEED);
+		HAL_GPIO_TogglePin(GPIOG,GPIO_PIN_2);//流水灯
+	HAL_Delay(SPEED);
+		HAL_GPIO_TogglePin(GPIOG,GPIO_PIN_3);//流水灯
+	HAL_Delay(SPEED);
+		HAL_GPIO_TogglePin(GPIOG,GPIO_PIN_4);//流水灯
+	HAL_Delay(SPEED);
+		HAL_GPIO_TogglePin(GPIOG,GPIO_PIN_5);//流水灯
+	HAL_Delay(SPEED);
+		HAL_GPIO_TogglePin(GPIOG,GPIO_PIN_6);//流水灯
+	HAL_Delay(SPEED);
+		HAL_GPIO_TogglePin(GPIOG,GPIO_PIN_7);//流水灯
+	HAL_Delay(SPEED);
+		HAL_GPIO_TogglePin(GPIOG,GPIO_PIN_8);//流水灯
+	HAL_Delay(SPEED);
+
+    HAL_GPIO_TogglePin(GPIOF, GPIO_PIN_14);
+    HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_11);
+    HAL_Delay(SPEED);
+}

@@ -30,6 +30,7 @@
 #include "MR1Init.h"
 extern int count;
 Remote_s Raw_Data;
+#define SPEEDLEVEL 5
 int countt;
 /**
 * @brief 遥控器数据具体解析函数
@@ -91,10 +92,10 @@ void MR1StateChange()
       
       if(MR1.WorkState == L1_R2_MANUAL || MR1.WorkState == L3_R2_Move || MR1.WorkState == L3_R1_Pick)           //遥控器控制模式
       {
-          MR1.Target.YSpeed = (Raw_Data.ch1 - CH0_BIAS) * MR1.SpeedLevel;
-          MR1.Target.XSpeed = (Raw_Data.ch0 - CH1_BIAS) * MR1.SpeedLevel;
-          MR1.Target.ASpeed = (Raw_Data.ch2 - CH3_BIAS) * MR1.SpeedLevel;
-					MR1.Target.BSpeed = (Raw_Data.ch3 - CH3_BIAS) * MR1.SpeedLevel;
+          MR1.Target.YSpeed = (Raw_Data.ch1 - CH0_BIAS) * SPEEDLEVEL;
+          MR1.Target.XSpeed = (Raw_Data.ch0 - CH1_BIAS) * SPEEDLEVEL;
+          MR1.Target.ASpeed = (Raw_Data.ch2 - CH3_BIAS) * SPEEDLEVEL;
+					MR1.Target.BSpeed = (Raw_Data.ch3 - CH3_BIAS) * SPEEDLEVEL;
       }
 
 }

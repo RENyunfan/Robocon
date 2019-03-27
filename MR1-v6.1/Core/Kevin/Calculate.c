@@ -38,6 +38,7 @@ void Calculate()
 	PID_Calc(&MR1.Chassis_Motor[4].pid);
 }
 
+
 void PID_Calc(PID_s *pid)
 {
 	pid->cur_error = pid->ref - pid->fdb;
@@ -60,15 +61,18 @@ void FourWheelVellControl()
 	double len = L;
 	Vx = MR1.Target.XSpeed;
 	Vy = MR1.Target.YSpeed;
-	Va = MR1.Target.ASpeed;
-	if(Va > 10 || Va < -10)
-	{
-		for(int i=0;i<4;i++)
-		{
-			vol[i] = Va;
-		}
-	}
-  else
+	Va = MR1.Target.ASpeed*0.001;
+	Vx =-Vx;
+//	if(Va > 2000 || Va < -2000)
+//	{
+//		for(int i=0;i<4;i++)
+//		{
+//			if(MR1.Target.ASpeed>0)
+//			vol[i] = 500;
+//			else vol[i]=-500;\
+//		}
+//	}
+//  else
 	  {
 		vol[0]=(double)(sin((AFA) / 180.0f * 3.1415926f) * Vx - cos((AFA) / 180.0f * 3.1415926f)*Vy+len * Va);//计算各轮子的转速
 		vol[1]=(double)(-sin((AFA) / 180.0f * 3.1415926f) * Vx - cos((AFA) / 180.0f * 3.1415926f)*Vy+len * Va);

@@ -57,6 +57,15 @@ void RobotParamInit()
 //	MR1.GyroData.pos_y =0;
 //	MR1.GyroData.w_z   =0;
 	MR1.WorkState = L2_Rx_STOP;          //初始化机器人状态为停止状态
+	MR1.ToToken_Speed_x.KP=10;
+	MR1.ToToken_Speed_x.KD=1;
+	MR1.ToToken_Speed_x.KI=1;
+	MR1.ToToken_Speed_y.KP=10;
+	MR1.ToToken_Speed_y.KD=1;
+	MR1.ToToken_Speed_y.KI=1;
+	MR1.ToToken_Theta.KP=15;
+	MR1.ToToken_Theta.KD=1;
+	MR1.ToToken_Theta.KI=1;
 }
 
 

@@ -47,6 +47,19 @@ typedef enum
 
 }WorkState_e;
 
+/**
+* @brief MR1位置状态枚举类型
+* @param None
+* @retval None
+*/
+typedef enum 
+{
+	ToTokenLeft,
+	ToTokenRight
+
+}TTP_e;
+
+
 typedef struct 
 {
 	int16_t fdbPos;
@@ -73,6 +86,19 @@ typedef struct
     int ASpeed;
 		int BSpeed;
 }Target_s;
+
+/**
+* @brief MR1ToToken参数结构体
+* @param None
+* @retval None
+*/
+typedef struct 
+{
+   int Ttarget;
+	 PID_s TPID;
+	 
+}TTK_s;
+
 
 /**
 * @brief MR1移动电机结构体
@@ -117,9 +143,9 @@ typedef struct
 	WorkState_e WorkState;
 	Motor_Move_s Chassis_Motor[5];
 	Gyro_s GyroData;
-
-	int motor5;
-	int SpeedLevel;
+	PID_s ToToken_Speed_x;
+	PID_s ToToken_Speed_y;
+	PID_s ToToken_Theta;
 }MR1_s;
 
 

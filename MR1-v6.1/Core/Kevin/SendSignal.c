@@ -32,10 +32,11 @@
 * @retval None
 * @TODO None
 */
-void SendGyro(int commond)
-{
 		uint8_t GyroCorrect[]="ATCR";
 		uint8_t GyroReset[]="ATC0";
+void SendGyro(int commond)
+{
+
 
 	switch(commond)
 	{
